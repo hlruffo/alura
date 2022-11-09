@@ -1,6 +1,5 @@
 import config from "../../config.json"
 import styled from "styled-components"
-import { CSSReset } from "../components/CSSReset"
 import Menu from "../components/Menu"
 import { StyledTimeline } from "../components/Timeline"
 import React from "react"
@@ -11,7 +10,7 @@ function HomePage() {
   const [valorDoFiltro, setValorDoFiltro] = React.useState("")
 
   return (<>
-    <CSSReset />
+
     <div style={{
       display: "flex",
       flexDirection: "column",
@@ -19,7 +18,7 @@ function HomePage() {
       // backgroundColor: "red",
     }}>
 
-      <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro}/>
+      <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
       <Header />
       <Timeline searchValue={valorDoFiltro} playlists={config.playlists} />
     </div>
@@ -30,6 +29,8 @@ function HomePage() {
 export default HomePage
 
 const StyledHeader = styled.div`
+background-color: ${({theme}) => theme.backgroundLevel1};
+
 img{
   width:80px;
   height:80px;
@@ -44,8 +45,9 @@ img{
   gap:16px;
 }
 `;
-const StyledBanner  =styled.div `
+const StyledBanner = styled.div`
   background-image:url(${config.topbanner});
+  //background-image:url(${({topbanner})=> topbanner}); //conferir pq parou de funcionar
   height: 230px;
 
 `
@@ -72,7 +74,7 @@ function Timeline({ searchValue, ...props }) {
     <StyledTimeline>
       {playlistNames.map((playlistName) => {
         const videos = props.playlists[playlistName];
-       
+
         return (
           <section>
             <h2>{playlistName}</h2>
