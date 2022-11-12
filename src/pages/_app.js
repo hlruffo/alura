@@ -42,13 +42,3 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
         <RegisterVideo/>
       </ThemeProvider>
-
-    </>)
-}
-export default function _App(props) {
-  return (
-    <ProviderWrapper>
-      <MyApp {...props} />
-    </ProviderWrapper>
-  )
-};
